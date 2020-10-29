@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "Input_Validation_Extended.h"
+#include <iomanip>
 using namespace std;
 //all of my prototypes are here
 void showMenu();
@@ -147,14 +148,16 @@ void velocity(double ds, double dt, double v)
 {
   string dsUnits = " Unit for speed", dtUnits = "Unit for time";
   v = ds / dt;
-  cout << v << dsUnits << "/" << dtUnits << endl; 
+  cout << fixed << setprecision(4);
+  cout << ds << "/" << dt << " = "<< v << dsUnits << "/" << dtUnits << endl; 
 }
 
 void acceleration(double dv, double dt, double a)
 {
   string dvUnits = " Unit for velocity", dtUnits = "Unit for time";
   a = dv / dt;
-  cout << a << dvUnits << "/" << dtUnits << endl;
+  cout << fixed << setprecision(4);
+  cout << dv << "/" << dt << " = " << a << dvUnits << "/" << dtUnits << endl;
 }
 
 void chooseMotion(string motionInput) //calculation for motion and also gives the other functions.
@@ -193,7 +196,9 @@ void chooseMotion(string motionInput) //calculation for motion and also gives th
           }
         }while (t < 0);
         Ma = v + a * t;
-        cout << Ma << endl;      }
+        cout << fixed << setprecision(4);
+        cout << v << "+" << a << "*" << t << "=" << Ma << endl;      
+      }
       else if (motionInput == "B" || motionInput == "b")
       {
         cout << "\nLets solve for the final distance." << endl;
@@ -236,7 +241,8 @@ void chooseMotion(string motionInput) //calculation for motion and also gives th
         }while (a < 0);
         
         Ms = s + v * t + (0.5 * a * (t * t));
-        cout << Ms << endl;      
+        cout << fixed << setprecision(4);
+        cout << s << "+" << v << "*" << t << "+" << "(" << 0.5 << "*" << a << "*" << "(" << t << "*" << t << ")" << ")" << "=" << Ms << endl;      
       }
       else if (motionInput == "C" || motionInput == "c")
       {
@@ -280,7 +286,8 @@ void chooseMotion(string motionInput) //calculation for motion and also gives th
         }while (s < 0);
 
         Mv2 = (v * v) + 2 * a * (Ms - s);
-        cout << Mv2 << endl;
+        cout << fixed << setprecision(4);
+        cout << "(" << v << "*" << v << ")" << "+" << 2 << "*" << a << "*" << "(" << Ms << "-" << s << ")" << "=" << Mv2 << endl;
       }
 
         else if (motionInput == "D" || motionInput == "d")
@@ -307,7 +314,8 @@ void chooseMotion(string motionInput) //calculation for motion and also gives th
           }while (v < 0);
 
           Mv = (Ma + v) * 0.5;
-          cout << Mv << endl;
+          cout << fixed << setprecision(4);
+          cout << "(" << Ma << "+"<< v << ")" << "*" << 0.5 << " = " << Mv << endl;
         }
         else
         {
@@ -319,19 +327,22 @@ void force (double m, double a, double N) //calculation for force
 {
   string mUnits = " Unit for mass", aUnits = "Unit for acceleration";
   N = m * a;
-  cout << N << mUnits << "/" << aUnits << endl;
+  cout << fixed << setprecision(4);
+  cout << N << " = " << m << " * " << a << mUnits << "/" << aUnits << endl;
 }
 void weight (double W, double m, double g) //calculation for weight
 {
   string mUnits = " Unit for mass", gUnits = "Unit for gravity";
   W = m * g;
-  cout << W << mUnits << "/" << gUnits << endl;
+  cout << fixed << setprecision(4);
+  cout << W << " = " << m << " * " << g << mUnits << "/" << gUnits << endl;
 }
 void momentum (double p, double m, double Ma) //calculation for momentum
 {
   string mUnits = " Units for mass", MaUnits = "Units for velocity";
   p = m * Ma;
-  cout << p << mUnits << "/" << MaUnits << endl;
+  cout << fixed << setprecision(4);
+  cout << p << " = " << m << " * " << Ma << mUnits << "/" << MaUnits << endl;
 }
 
 
